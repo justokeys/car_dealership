@@ -74,4 +74,9 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public String toString(){
+
+        return this.getYear() + " " + this.getMake() + " " + this.getModel() + " - $" + this.getPrice();
+    }
 }

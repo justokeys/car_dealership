@@ -20,4 +20,23 @@ public class UserInterface {
 
 
     }
+
+    public void processGetVehiclesByMakeModel(Dealership dealership){
+        System.out.println("Whats is the make?");
+        String make = thescanner.nextLine();
+        System.out.println("Whats is the min model?");
+        String model = thescanner.nextLine();
+        List<Vehicle> results = dealership.getVehiclesByMakeModel(make,model);
+
+        for (Vehicle matchingVehicle : results){
+            System.out.println(matchingVehicle.toString());
+        }
+
+
+
+
+
+    }
+
+
 }
