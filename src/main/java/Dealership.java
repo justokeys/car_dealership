@@ -7,7 +7,6 @@ public class Dealership {
     private String address;
     private String phone;
     private ArrayList<Vehicle> inventory;
-    public Scanner thescanner = new Scanner(System.in);
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -41,16 +40,28 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(double min, double max){
-        System.out.println("Whats is the min price?");
-         min = thescanner.nextDouble();
-        System.out.println("Whats is the min price?");
-        max = thescanner.nextDouble();
+        List<Vehicle> vehicleMatch = new ArrayList<>();
+        for (Vehicle v : this.inventory){
+            if(v.getPrice() >= min && v.getPrice() <= max){
+                vehicleMatch.add(v);
+            }
+        }
 
-
-        return null;
+        return vehicleMatch;
     }
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
-        return null;
+        List<Vehicle> makeAndModelMatch = new ArrayList<>();
+        for (Vehicle v : this.inventory){
+            String vehicleMake = v.getMake();
+            String vehicleModel = v.getMake();
+            if(vehicleMake.toLowerCase().contains(make.toLowerCase()) && vehicleModel.toLowerCase().contains(model.toLowerCase())){
+                makeAndModelMatch.add(v);
+
+            }
+
+        }
+
+        return makeAndModelMatch;
     }
     public List<Vehicle> getVehiclesByYear(int min, int max){
         return null;
