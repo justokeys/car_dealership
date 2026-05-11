@@ -1,16 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Dealership {
     private String name;
     private String address;
     private String phone;
     private ArrayList<Vehicle> inventory;
+    public Scanner thescanner = new Scanner(System.in);
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.inventory = new ArrayList<Vehicle>();
     }
 
     public String getName() {
@@ -38,6 +41,12 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(double min, double max){
+        System.out.println("Whats is the min price?");
+         min = thescanner.nextDouble();
+        System.out.println("Whats is the min price?");
+        max = thescanner.nextDouble();
+
+
         return null;
     }
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
@@ -54,8 +63,9 @@ public class Dealership {
     }
     public List<Vehicle> getVehiclesByType(String vehicleType){
         return null;
-    }List<Vehicle> getAllVehicles(){
-        return null;
+    }
+    List<Vehicle> getAllVehicles(){
+        return this.inventory;
     }
 
     public void addVehicle(Vehicle vehicle){
@@ -65,6 +75,8 @@ public class Dealership {
     public void removeVehicle(Vehicle vehicle){
         inventory.remove(vehicle);
     }
+
+
 
 
 
