@@ -24,9 +24,10 @@ public class UserInterface {
     public void processGetVehiclesByMakeModel(Dealership dealership){
         System.out.println("Whats is the make?");
         String make = thescanner.nextLine();
-        System.out.println("Whats is the min model?");
+        System.out.println("Whats is the model?");
         String model = thescanner.nextLine();
         List<Vehicle> results = dealership.getVehiclesByMakeModel(make,model);
+        System.out.println(" ------ Matching result ------");
 
         for (Vehicle matchingVehicle : results){
             System.out.println(matchingVehicle.toString());
@@ -34,6 +35,56 @@ public class UserInterface {
 
 
 
+
+
+    }
+
+    public void processGetVehiclesByYear(Dealership dealership){
+
+        System.out.println("Whats is the min price?");
+        int min = thescanner.nextInt();
+        System.out.println("Whats is the min price?");
+         int max = thescanner.nextInt();
+        List<Vehicle> results = dealership.getVehiclesByYear(min,max);
+
+        System.out.println(" ------ Matching result ------");
+        for (Vehicle matchingVehicle : results){
+            System.out.println(matchingVehicle.toString());
+        }
+
+
+
+
+
+    }
+
+    public void processGetVehiclesByColor(Dealership dealership){
+
+        System.out.println("What color are you looking for?");
+        String color = thescanner.nextLine();
+        List<Vehicle> results = dealership.getVehiclesByColor(color);
+
+        System.out.println(" ------ Matching result ------");
+        for (Vehicle matchingVehicle : results){
+            System.out.println(matchingVehicle.toString());
+        }
+
+
+
+    }
+
+    public void processGetVehiclesByMileage(Dealership dealership){
+
+        System.out.println("Whats is the min mileage?");
+        int min = thescanner.nextInt();
+        System.out.println("Whats is the max mileage?");
+        int max = thescanner.nextInt();
+        List<Vehicle> results = dealership.getVehiclesByMileage(min,max);
+
+        System.out.println(" ------ Matching result ------");
+        for (Vehicle matchingVehicle : results){
+            System.out.println(matchingVehicle.toString());
+        }
 
 
     }

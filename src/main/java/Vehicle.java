@@ -19,6 +19,14 @@ public class Vehicle {
         this.price = price;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public String getVin() {
         return vin;
     }
