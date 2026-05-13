@@ -5,7 +5,7 @@ public class DealershipFileManager {
 
     private static String file_Path = "src/main/resources/inventory.csv";
 
-    public Dealership getDealerShip(){
+    public Dealership getdealerShip(){
 
         Dealership theDealership = null;
 
