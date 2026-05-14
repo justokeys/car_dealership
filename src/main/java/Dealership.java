@@ -110,7 +110,7 @@ public class Dealership {
 
         return vehicleMatch;
     }
-    List<Vehicle> getAllVehicles(){
+    ArrayList<Vehicle> getAllVehicles(){
         return this.inventory;
     }
 
@@ -118,9 +118,20 @@ public class Dealership {
         inventory.add(vehicle);
     }
 
-    public void removeVehicle(Vehicle vehicle){
-        inventory.remove(vehicle);
+    public boolean removeVehicleByVin(String vin){
+        for (int i = 0; i < inventory.size(); i++) {
+            Vehicle currentV = inventory.get(i);
+            String carVin = currentV.getVin();
+
+            if(carVin.equalsIgnoreCase(vin)){
+                inventory.remove(i);
+                return true;
+            }
+
+        }
+        return false;
     }
+
 
 
 

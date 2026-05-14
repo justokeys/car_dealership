@@ -1,5 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
+import java.util.ArrayList;
 
 public class DealershipFileManager {
 
@@ -63,6 +63,30 @@ public class DealershipFileManager {
 
     public void  saveDealership(Dealership dealership){
 
+        try{
+            BufferedWriter inventorWriter = new BufferedWriter(new FileWriter(file_Path));
+
+            inventorWriter.write(dealership.getName() + " | " + dealership.getAddress() + " | " + dealership.getPhone());
+            inventorWriter.newLine();
+            ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
+            for(Vehicle vehicle : vehicles ){
+             String line =  String.format ("%s | %d | %s | %s | %s | %s | %d | .2%f", vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(),vehicle.getPrice());
+                inventorWriter.write(line);
+                inventorWriter.newLine();
+
+            }
+            inventorWriter.close();
+
+
+
+
+        } catch (Exception e) {
+            System.out.println("Error Reading file");
+
+        }
+
+
     }
+
 
 }

@@ -23,6 +23,8 @@ public class UserInterface {
             System.out.println("4 - Find vehicles by color");
             System.out.println("5 - Find vehicles by mileage range");
             System.out.println("6 - Find vehicles by type");
+            System.out.println("7 - Add vehicle");
+            System.out.println("8 - Remove vehicle");
             System.out.println("99 - Quit");
             System.out.println("Enter your choice: ");
 
@@ -47,6 +49,12 @@ public class UserInterface {
                     break;
                 case 6:
                     processGetVehiclesByType(dealership);
+                    break;
+                case 7:
+                    processedVehicleRequest(dealership);
+                    break;
+                case 8:
+                    proccessRemoveVehicleRequest(dealership);
                     break;
                 case 99:
                     isRunning = false;
@@ -153,6 +161,61 @@ public class UserInterface {
         for (Vehicle matchingVehicle : results) {
             System.out.println(matchingVehicle.toString());
         }
+
+
+    }
+
+    public void processedVehicleRequest(Dealership dealership){
+        System.out.print("Enter VIN: ");
+        String vin = thescanner.nextLine();
+        thescanner.nextLine();
+
+        System.out.print("Enter year: ");
+        int year = thescanner.nextInt();
+        thescanner.nextLine();
+
+        System.out.print("Enter make: ");
+        String make = thescanner.nextLine();
+
+        System.out.print("Enter model: ");
+        String model = thescanner.nextLine();
+
+        System.out.print("Enter type: ");
+        String type = thescanner.nextLine();
+
+        System.out.print("Enter color: ");
+        String color = thescanner.nextLine();
+
+        System.out.print("Enter mileage: ");
+        int mileage = thescanner.nextInt();
+
+        System.out.print("Enter price: ");
+        double price = thescanner.nextDouble();
+
+        Vehicle newV = new Vehicle(vin,year,make,model,type,color,mileage,price);
+        dealership.addVehicle(newV);
+        // got this from you Eric I was lost
+        DealershipFileManager dfm = new DealershipFileManager();
+        dfm.saveDealership(dealership);
+        System.out.println("Success! new vehicle added.");
+
+    }
+
+    public void   proccessRemoveVehicleRequest(Dealership dealership){
+
+
+        System.out.println("To remove vehicle enter vin :");
+        String vin = thescanner.nextLine();
+
+        boolean removed = dealership.removeVehicleByVin(vin);
+
+        if (removed) {
+            System.out.println("Vehicle removed successfully.");
+        } else {
+            System.out.println("Vehicle not found.");
+        }
+
+
 
 
     }
